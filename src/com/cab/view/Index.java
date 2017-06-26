@@ -1,4 +1,4 @@
-package com.canview;
+package com.cab.view;
 
 import javax.swing.JFrame;
 
