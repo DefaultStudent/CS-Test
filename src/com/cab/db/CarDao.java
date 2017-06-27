@@ -40,7 +40,7 @@ public class CarDao {
 		int i = 0;
 		try{
 			
-			String sql1 = "update car set cartype = '"+cartype+"', '"+areaname+"', '"+carstate+"'where carid = '"+carid+"'";
+			String sql1 = "update car set cartype = '"+cartype+"', areaname = '"+areaname+"', carstate = '"+carstate+"'where carid = '"+carid+"'";
 			i = DAO.executeUpdate(sql1);
 		} catch (Exception e){
 			e.printStackTrace();

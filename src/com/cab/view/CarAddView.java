@@ -128,5 +128,7 @@ public class CarAddView extends JFrame {
 		});
 		closeJB.setBounds(411, 284, 113, 27);
 		areaJCB.add(closeJB);
+		
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 }

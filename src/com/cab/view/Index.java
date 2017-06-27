@@ -20,6 +20,7 @@ public class Index extends JFrame {
 		int height = Toolkit.getDefaultToolkit().getScreenSize().height;
 		this.setLocation(width / 2 - 500, height / 2 - 450);
 		
+		//一级菜单栏内容
 		jMenuBar = new JMenuBar();
 		this.setJMenuBar(jMenuBar);
 		carMenu = new JMenu("车辆信息管理");
@@ -35,10 +36,14 @@ public class Index extends JFrame {
 		jMenuBar.add(borrowInfoMenu);
 		jMenuBar.add(returnInfoMenu);
 		jMenuBar.add(helpMenu);
+		
+		//二级菜单栏内容
 		carAddItem = new JMenuItem("车辆信息添加");
 		carAddItem.addActionListener(new carAddActionListener());
 		carDeleteItem = new JMenuItem("车辆信息删除");
+		carDeleteItem.addActionListener(new carUpdateandDeleteActionListener());
 		carUpdateItem = new JMenuItem("车辆信息修改");
+		carUpdateItem.addActionListener(new carUpdateandDeleteActionListener());
 		carSelectItem = new JMenuItem("车辆信息查询");
 		carSelectItem.addActionListener(new carSelectActionListener());
 		carMenu.add(carAddItem);
@@ -46,9 +51,13 @@ public class Index extends JFrame {
 		carMenu.add(carUpdateItem);
 		carMenu.add(carSelectItem);
 		userAddItem = new JMenuItem("用户信息添加");
+		userAddItem.addActionListener(new userAddActionListener());
 		userDeleteItem = new JMenuItem("用户信息删除");
+		userDeleteItem.addActionListener(new userUpdateandDeleteActionListener());
 		userUpdateItem = new JMenuItem("用户信息修改");
+		userUpdateItem.addActionListener(new userUpdateandDeleteActionListener());
 		userSelectItem = new JMenuItem("用户信息查询");
+		userSelectItem.addActionListener(new userSelectActionListener());
 		userMenu.add(userAddItem);
 		userMenu.add(userDeleteItem);
 		userMenu.add(userUpdateItem);
@@ -80,7 +89,7 @@ public class Index extends JFrame {
 		helpMenu.add(exitItem);
 		exitItem.addActionListener(new ExitActionListener());
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setVisible(true);
 	}
 	
@@ -128,6 +137,38 @@ public class Index extends JFrame {
 		public void actionPerformed(final ActionEvent e){
 			CarSelectView carSelectView = new CarSelectView();
 			carSelectView.setVisible(true);
+		}
+	}
+	
+	//车辆信息修改和删除菜单按钮响应事件
+	class carUpdateandDeleteActionListener implements ActionListener{
+		public void actionPerformed(final ActionEvent e){
+			CarUpdateandDeleteView carUpdateandDeleteView = new CarUpdateandDeleteView();
+			carUpdateandDeleteView.setVisible(true);
+		}
+	}
+	
+	//用户信息添加菜单按钮响应事件
+	class userAddActionListener implements ActionListener{
+		public void actionPerformed(final ActionEvent e){
+			UserAddView userAddView = new UserAddView();
+			userAddView.setVisible(true);
+		}
+	}
+	
+	//用户信息查询菜单按钮响应事件
+	class userSelectActionListener implements ActionListener{
+		public void actionPerformed(final ActionEvent e){
+			UserSelectView userSelectView = new UserSelectView();
+			userSelectView.setVisible(true);
+		}
+	}
+	
+	//用户信息查询和修改菜单按钮响应事件
+	class userUpdateandDeleteActionListener implements ActionListener{
+		public void actionPerformed(final ActionEvent e){
+			UserUpdateandDeleteView userUpdateandDeleteView = new UserUpdateandDeleteView();
+			userUpdateandDeleteView.setVisible(true);
 		}
 	}
 	

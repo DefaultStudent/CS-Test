@@ -121,5 +121,7 @@ public class AreaSelectView extends JFrame {
 		});
 		resetJB.setBounds(213, 217, 113, 27);
 		contentPane.add(resetJB);
+		
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 }

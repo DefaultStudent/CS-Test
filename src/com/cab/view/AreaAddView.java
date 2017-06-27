@@ -97,5 +97,6 @@ public class AreaAddView extends JFrame {
 		});
 		resetJB.setBounds(417, 273, 113, 27);
 		contentPane.add(resetJB);
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 }

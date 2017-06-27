@@ -4,8 +4,8 @@ public class Returninfo {
 	private int userid;
 	private String username;
 	private int carid;
-	private int areaid;
 	private String returntime;
+	private int areaid;
 	private String areaname;
 	
 	public int getUserid() {
@@ -26,12 +26,6 @@ public class Returninfo {
 	public void setCarid(int carid) {
 		this.carid = carid;
 	}
-	public int getAreaid() {
-		return areaid;
-	}
-	public void setAreaid(int areaid) {
-		this.areaid = areaid;
-	}
 	public String getReturntime() {
 		return returntime;
 	}
@@ -44,5 +38,12 @@ public class Returninfo {
 	public void setAreaname(String areaname) {
 		this.areaname = areaname;
 	}
+	public int getAreaid() {
+		return areaid;
+	}
+	public void setAreaid(int areaid) {
+		this.areaid = areaid;
+	}
+	
 
 }

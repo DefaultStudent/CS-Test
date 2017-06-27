@@ -101,6 +101,8 @@ public class AreaUpdateandDeleteView extends JFrame {
 		});
 		deleteJB.setBounds(323, 294, 113, 27);
 		contentPane.add(deleteJB);
+		
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 
 }

@@ -1,13 +1,11 @@
 package com.cab.view;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.cab.db.AreaDao;
 import com.cab.db.CarDao;
 import com.cab.modle.Car;
 
@@ -86,6 +84,7 @@ public class CarSelectView extends JFrame {
 		scrollPane.setViewportView(jtable);
 		contentPane.add(scrollPane);
 		
+		//查询按钮监听响应事件
 		JButton btnNewButton = new JButton("\u67E5\u8BE2");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -130,6 +129,8 @@ public class CarSelectView extends JFrame {
 		});
 		button.setBounds(240, 85, 113, 27);
 		contentPane.add(button);
+		
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 
 }
