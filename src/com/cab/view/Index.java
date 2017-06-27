@@ -13,7 +13,8 @@ public class Index extends JFrame {
 	private JMenuBar jMenuBar;
 	private JMenu areaMenu, userMenu, borrowInfoMenu, returnInfoMenu, carMenu, helpMenu;
 	private JMenuItem carAddItem, carDeleteItem, carSelectItem, carUpdateItem,  userAddItem, userDeleteItem, userUpdateItem, userSelectItem, areaAddItem, areaDeleteItem, areaUpdateItem, areaSelectItem,
-		borrowInfoAddItem, borrowInfoSelectItem, returnInfoAddItem, returnInfoSelectItem, exitItem;
+		borrowInfoAddItem, borrowInfoSelectItem, returnInfoAddItem, returnInfoSelectItem, exitItem, infoItem;
+	
 	public Index(){
 		setSize(1000, 800);
 		int width = Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -68,6 +69,9 @@ public class Index extends JFrame {
 		returnInfoMenu.add(returnInfoAddItem);
 		returnInfoMenu.add(returnInfoSelectItem);
 		exitItem = new JMenuItem("退出系统");
+		infoItem = new JMenuItem("关于我们");
+		helpMenu.add(infoItem);
+		helpMenu.addSeparator();
 		helpMenu.add(exitItem);
 		exitItem.addActionListener(new ExitActionListener());
 		
