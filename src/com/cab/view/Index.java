@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class Index extends JFrame {
-	private JPanel textJP, addJP, buttonJP;
 	private JMenuBar jMenuBar;
 	private JMenu areaMenu, userMenu, borrowInfoMenu, returnInfoMenu, carMenu, helpMenu;
 	private JMenuItem carAddItem, carDeleteItem, carSelectItem, carUpdateItem,  userAddItem, userDeleteItem, userUpdateItem, userSelectItem, areaAddItem, areaDeleteItem, areaUpdateItem, areaSelectItem,
@@ -37,9 +36,11 @@ public class Index extends JFrame {
 		jMenuBar.add(returnInfoMenu);
 		jMenuBar.add(helpMenu);
 		carAddItem = new JMenuItem("车辆信息添加");
+		carAddItem.addActionListener(new carAddActionListener());
 		carDeleteItem = new JMenuItem("车辆信息删除");
 		carUpdateItem = new JMenuItem("车辆信息修改");
 		carSelectItem = new JMenuItem("车辆信息查询");
+		carSelectItem.addActionListener(new carSelectActionListener());
 		carMenu.add(carAddItem);
 		carMenu.add(carDeleteItem);
 		carMenu.add(carUpdateItem);
@@ -53,9 +54,13 @@ public class Index extends JFrame {
 		userMenu.add(userUpdateItem);
 		userMenu.add(userSelectItem);
 		areaAddItem = new JMenuItem("地区信息添加");
+		areaAddItem.addActionListener(new areaAddInfoActionListener());
 		areaDeleteItem = new JMenuItem("地区信息删除");
+		areaDeleteItem.addActionListener(new areaUpdateandDeleteActionListener());
 		areaUpdateItem = new JMenuItem("地区信息修改");
+		areaUpdateItem.addActionListener(new areaUpdateandDeleteActionListener());
 		areaSelectItem = new JMenuItem("地区信息查询");
+		areaSelectItem.addActionListener(new areaSelectActionListener());
 		areaMenu.add(areaAddItem);
 		areaMenu.add(areaDeleteItem);
 		areaMenu.add(areaUpdateItem);
@@ -77,12 +82,52 @@ public class Index extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
-		setResizable(false);
 	}
 	
+	//退出菜单按钮响应事件
 	class ExitActionListener implements ActionListener{
 		public void actionPerformed(final ActionEvent e){
 			System.exit(0);
+		}
+	}
+	
+	//地区信息添加菜单按钮响应事件
+	class areaAddInfoActionListener implements ActionListener{
+		public void actionPerformed(final ActionEvent e){
+			AreaAddView areaAddView = new AreaAddView();
+			areaAddView.setVisible(true);
+		}
+	}
+	
+	//地区信息查询菜单按钮响应事件
+	class areaSelectActionListener implements ActionListener{
+		public void actionPerformed(final ActionEvent e){
+			AreaSelectView areaSelectView = new AreaSelectView();
+			areaSelectView.setVisible(true);
+		}
+	}
+	
+	//地区信息修改和删除菜单按钮响应事件
+	class areaUpdateandDeleteActionListener implements ActionListener{
+		public void actionPerformed(final ActionEvent e){
+			AreaUpdateandDeleteView aUD = new AreaUpdateandDeleteView();
+			aUD.setVisible(true);
+		}
+	}
+	
+	//车辆信息添加菜单按钮响应事件
+	class carAddActionListener implements ActionListener{
+		public void actionPerformed(final ActionEvent e){
+			CarAddView carAddView = new CarAddView();
+			carAddView.setVisible(true);
+		}
+	}
+	
+	//车辆信息查询菜单按钮响应事件
+	class carSelectActionListener implements ActionListener{
+		public void actionPerformed(final ActionEvent e){
+			CarSelectView carSelectView = new CarSelectView();
+			carSelectView.setVisible(true);
 		}
 	}
 	

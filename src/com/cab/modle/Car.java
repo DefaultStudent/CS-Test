@@ -3,7 +3,6 @@ package com.cab.modle;
 public class Car {
 	private int carid;
 	private String cartype;
-	private int areaid;
 	private String carstate;
 	private String arename;
 	
@@ -18,12 +17,6 @@ public class Car {
 	}
 	public void setCartype(String cartype) {
 		this.cartype = cartype;
-	}
-	public int getAreaid() {
-		return areaid;
-	}
-	public void setAreaid(int areaid) {
-		this.areaid = areaid;
 	}
 	public String getCarstate() {
 		return carstate;

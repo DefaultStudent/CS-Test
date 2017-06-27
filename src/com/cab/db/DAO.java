@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class DAO {
     protected static String dbClassName = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    protected static String dbUrl = "jdbc:sqlserver://localhost:1433;" + "DatabaseName=db_cab;";
+    protected static String dbUrl = "jdbc:sqlserver://localhost:1433;" + "DatabaseName=CABWeb;";
     protected static String dbUser = "sa";
-    protected static String dbPwd = "sqlserver2008";
+    protected static String dbPwd = "sql2008";
     private static Connection conn = null;
     /*
      * 

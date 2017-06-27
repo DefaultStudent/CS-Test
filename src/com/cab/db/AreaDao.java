@@ -64,5 +64,23 @@ public class AreaDao {
 		DAO.close();
 		return list;
 	}
+	//查询指定编号的地区信息
+	public static List<Area> selectAreaById(int areaid){
+		List<Area> list = new ArrayList<Area>();
+		String sql = "select * from area where areaid = '"+areaid+"'";
+		ResultSet rs = DAO.executeQuery(sql);
+		try{
+			while (rs.next()){
+				Area area = new Area();
+				area.setAreaid(rs.getInt("areaid"));
+				area.setAreaname(rs.getString("areaname"));
+				list.add(area);
+			}
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		DAO.close();
+		return list;
+	}
 
 }
