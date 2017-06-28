@@ -76,7 +76,6 @@ public class AreaAddView extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int areaId = Integer.parseInt(areaIdJTF.getText().trim());
 				String areaName = areaNameJTF.getText().trim();
-				
 				int i = AreaDao.insertArea(areaId, areaName);
 				if (i == 1){
 					JOptionPane.showMessageDialog(null, "Ìí¼Ó³É¹¦");

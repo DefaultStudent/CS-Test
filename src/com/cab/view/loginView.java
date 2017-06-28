@@ -11,12 +11,20 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+
 import javax.swing.SwingConstants;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
 
 public class loginView extends JFrame {
 
@@ -49,7 +57,7 @@ public class loginView extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 358);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 255, 255));
+		contentPane.setBackground(new Color(240, 230, 140));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -78,7 +86,10 @@ public class loginView extends JFrame {
 					JOptionPane.showMessageDialog(null, "密码不可以为空");
 	                return;
 				} else if (useridJTF.getText().equals("admin") && pwdJPF.getText().equals("admin")){
-					new Index();
+					Index index = new Index();
+					index.setVisible(true);
+					loginView lg = new loginView();
+					lg.setVisible(false);
 				} else{
 					JOptionPane.showMessageDialog(null, "账户或密码错误");
 	                return;
@@ -96,5 +107,16 @@ public class loginView extends JFrame {
 		pwdJPF = new JPasswordField();
 		pwdJPF.setBounds(217, 150, 144, 24);
 		contentPane.add(pwdJPF);
+		
+		JLabel label = new JLabel("\u8F66\u8F86\u51FA\u79DF\u7BA1\u7406\u7CFB\u7EDF");
+		label.setFont(new Font("宋体", Font.BOLD, 21));
+		label.setBounds(123, 34, 218, 18);
+		contentPane.add(label);
+		
+		JLabel lbladminadmin = new JLabel("\u767B\u9646\u8D26\u53F7\u4E3A\uFF1Aadmin,       \u5BC6\u7801\u4E3A\uFF1Aadmin\u3002");
+		lbladminadmin.setBounds(71, 214, 347, 18);
+		contentPane.add(lbladminadmin);
+		
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 }

@@ -18,6 +18,7 @@ public class Index extends JFrame {
 		setSize(1000, 800);
 		int width = Toolkit.getDefaultToolkit().getScreenSize().width;
 		int height = Toolkit.getDefaultToolkit().getScreenSize().height;
+		setTitle("车辆出租管理系统");
 		this.setLocation(width / 2 - 500, height / 2 - 450);
 		
 		//一级菜单栏内容
@@ -75,11 +76,15 @@ public class Index extends JFrame {
 		areaMenu.add(areaUpdateItem);
 		areaMenu.add(areaSelectItem);
 		borrowInfoAddItem = new JMenuItem("租借信息添加");
+		borrowInfoAddItem.addActionListener(new borrowInfoAddActionListener());
 		borrowInfoSelectItem = new JMenuItem("租借信息查询");
+		borrowInfoSelectItem.addActionListener(new borrowInfoSelectActionListener());
 		borrowInfoMenu.add(borrowInfoAddItem);
 		borrowInfoMenu.add(borrowInfoSelectItem);
 		returnInfoAddItem = new JMenuItem("归还信息添加");
+		returnInfoAddItem.addActionListener(new returnInfoAddActionListener());
 		returnInfoSelectItem = new JMenuItem("归还信息查询");
+		returnInfoSelectItem.addActionListener(new returnInfoSelectActionListener());
 		returnInfoMenu.add(returnInfoAddItem);
 		returnInfoMenu.add(returnInfoSelectItem);
 		exitItem = new JMenuItem("退出系统");
@@ -169,6 +174,38 @@ public class Index extends JFrame {
 		public void actionPerformed(final ActionEvent e){
 			UserUpdateandDeleteView userUpdateandDeleteView = new UserUpdateandDeleteView();
 			userUpdateandDeleteView.setVisible(true);
+		}
+	}
+	
+	//租借信息添加菜单按钮响应事件
+	class borrowInfoAddActionListener implements ActionListener{
+		public void actionPerformed(final ActionEvent e){
+			BorrowInfoAddView borrowInfoAddView = new BorrowInfoAddView();
+			borrowInfoAddView.setVisible(true);
+		}
+	}
+	
+	//租借信息查询菜单按钮响应事件
+	class borrowInfoSelectActionListener implements ActionListener{
+		public void actionPerformed(final ActionEvent e){
+			BorrowInfoSelectView borrowInfoSelectView = new BorrowInfoSelectView();
+			borrowInfoSelectView.setVisible(true);
+		}
+	}
+	
+	//归还信息添加菜单按钮响应事件
+	class returnInfoAddActionListener implements ActionListener{
+		public void actionPerformed(final ActionEvent e){
+			ReturnInfoAddView returnInfoAddView = new ReturnInfoAddView();
+			returnInfoAddView.setVisible(true);
+		}
+	}
+	
+	//归还信息查询菜单按钮响应事件
+	class returnInfoSelectActionListener implements ActionListener{
+		public void actionPerformed(final ActionEvent e){
+			ReturnInfoSelectView returnInfoSelectView = new ReturnInfoSelectView();
+			returnInfoSelectView.setVisible(true);
 		}
 	}
 	

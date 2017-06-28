@@ -100,7 +100,7 @@ public class ReturnInfoDao {
 	}
 	
 	//∞¥≥µ¡æ±‡∫≈≤È—Ø
-	public static List<Returninfo> selectReturnInfoByUserName(int carid){
+	public static List<Returninfo> selectReturnInfoByCarid(int carid){
 		List<Returninfo> list = new ArrayList<Returninfo>();
 		String sql = "select userid, username, carid, returndate, areaname from returninfo join area on returninfo.areaid = area.areaid where carid = '"+carid+"'";
 		ResultSet rs = DAO.executeQuery(sql);

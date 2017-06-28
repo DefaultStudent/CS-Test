@@ -7,7 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.cab.db.AreaDao;
 import com.cab.db.CarDao;
+import com.cab.modle.Area;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -16,6 +18,7 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class CarUpdateandDeleteView extends JFrame {
@@ -84,8 +87,12 @@ public class CarUpdateandDeleteView extends JFrame {
 		carTypeJTF.setColumns(10);
 		
 		final JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"\u629A\u987A\u5E02", "\u5927\u8FDE\u5E02", "\u9526\u5DDE\u5E02"}));
 		comboBox.setBounds(395, 116, 135, 24);
+		List<Area> list = AreaDao.selectArea();
+		for (int i = 0; i < list.size(); i++){
+			Area area = list.get(i);
+			comboBox.addItem(area.getAreaname());
+		}
 		contentPane.add(comboBox);
 		
 		//车辆信息修改按钮单击响应事件

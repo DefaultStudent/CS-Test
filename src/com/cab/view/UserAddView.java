@@ -109,12 +109,20 @@ public class UserAddView extends JFrame {
 				}
 				String tel = telJTF.getText().trim();
 				
-				if (userIdJTF.getText().trim().equals("")){
+				if (!UserDao.selectUserById(userid).isEmpty()){
+					JOptionPane.showMessageDialog(null, "该用户已存在");
+					return;
+				}
+				
+				if (userIdJTF.getText().length() == 0){
 					JOptionPane.showMessageDialog(null, "用户编号不能为空！");
-				} else if (username.equals("")){
+					return;
+				} else if (username.length() == 0){
 					JOptionPane.showMessageDialog(null, "用户姓名不能为空！");
-				} else if (tel.equals("")){
+					return;
+				} else if (tel.length() == 0){
 					JOptionPane.showMessageDialog(null, "联系电话不能为空！");
+					return;
 				} else{
 					int i = UserDao.insertUser(userid, username, sex, tel);
 					if (i == 0){

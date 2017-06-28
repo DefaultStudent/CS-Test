@@ -7,7 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.cab.db.AreaDao;
 import com.cab.db.CarDao;
+import com.cab.modle.Area;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -16,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class CarAddView extends JFrame {
@@ -45,6 +48,7 @@ public class CarAddView extends JFrame {
 	 * Create the frame.
 	 */
 	public CarAddView() {
+		setTitle("\u8F66\u8F86\u4FE1\u606F\u6DFB\u52A0");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 607, 393);
 		areaJCB = new JPanel();
@@ -69,8 +73,12 @@ public class CarAddView extends JFrame {
 		areaJCB.add(lblNewLabel_3);
 		
 		final JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"\u629A\u987A\u5E02", "\u5927\u8FDE\u5E02", "\u9526\u5DDE\u5E02"}));
 		comboBox.setBounds(411, 155, 130, 24);
+		List<Area> list = AreaDao.selectArea();
+		for (int i = 0; i < list.size(); i++){
+			Area area = list.get(i);
+			comboBox.addItem(area.getAreaname());
+		}
 		areaJCB.add(comboBox);
 		
 		carIdJTF = new JTextField();
@@ -106,7 +114,7 @@ public class CarAddView extends JFrame {
 				}
 			}
 		});
-		addJB.setBounds(34, 284, 113, 27);
+		addJB.setBounds(159, 284, 113, 27);
 		areaJCB.add(addJB);
 		
 		JButton resetJB = new JButton("\u91CD\u7F6E");
@@ -117,17 +125,8 @@ public class CarAddView extends JFrame {
 				carStateJTF.setText("");
 			}
 		});
-		resetJB.setBounds(221, 284, 113, 27);
+		resetJB.setBounds(303, 284, 113, 27);
 		areaJCB.add(resetJB);
-		
-		JButton closeJB = new JButton("\u5173\u95ED");
-		closeJB.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
-			}
-		});
-		closeJB.setBounds(411, 284, 113, 27);
-		areaJCB.add(closeJB);
 		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}

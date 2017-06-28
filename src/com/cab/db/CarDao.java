@@ -153,5 +153,33 @@ public class CarDao {
 		DAO.close();
 		return list;
 	}
+	
+	//×â½è³µÁ¾
+	public static int borrowCar(Integer carid){
+		int j = 0;
+		try{
+			
+			String sql1 = "update car set carstate = 'ÒÑ×â½è'where carid = '"+carid+"'";
+			j = DAO.executeUpdate(sql1);
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		DAO.close();
+		return j;
+	}
+	
+	//¹é»¹³µÁ¾
+	public static int returnCar(Integer carid){
+		int k = 0;
+		try{
+			
+			String sql1 = "update car set carstate = 'Î´×â½è'where carid = '"+carid+"'";
+			k = DAO.executeUpdate(sql1);
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		DAO.close();
+		return k;
+	}
 
 }

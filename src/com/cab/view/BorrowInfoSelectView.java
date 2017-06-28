@@ -20,6 +20,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class BorrowInfoSelectView extends JFrame {
 
@@ -122,6 +124,6 @@ public class BorrowInfoSelectView extends JFrame {
 		selectJB.setBounds(441, 12, 113, 27);
 		contentPane.add(selectJB);
 		
-		
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 }

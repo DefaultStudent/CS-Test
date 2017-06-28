@@ -108,7 +108,7 @@ public class UserDao {
 		return list;
 	}
 	
-	//按姓名查询用户信息
+	//按联系电话查询用户信息
 	public static List<User> selectUserByTel(String tel){
 		List<User> list = new ArrayList<User>();
 		String sql = "select * from users where tel = '"+tel+"'";

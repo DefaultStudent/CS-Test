@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 
 import com.cab.db.AreaDao;
 import com.cab.db.BorrowInfoDao;
+import com.cab.db.CarDao;
+import com.cab.db.UserDao;
 import com.cab.modle.Area;
 
 import javax.swing.JLabel;
@@ -20,6 +22,8 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class BorrowInfoAddView extends JFrame {
 
@@ -110,7 +114,7 @@ public class BorrowInfoAddView extends JFrame {
 		dateJTF.setColumns(10);
 		
 		//添加按钮单击响应事件
-		JButton aaddJB = new JButton("\u6DFB\u52A0");
+		JButton aaddJB = new JButton("\u79DF\u501F");
 		aaddJB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int userid = Integer.parseInt(userIdJTF.getText().trim());
@@ -119,9 +123,17 @@ public class BorrowInfoAddView extends JFrame {
 				String areaname = (String)comboBox.getSelectedItem();
 				String borrowtime = dateJTF.getText().trim();
 				
+				if (UserDao.selectUserById(userid).isEmpty()){
+					JOptionPane.showMessageDialog(null, "请先添加此用户信息");
+					return;
+				}
+				
 				int i = BorrowInfoDao.insertBorrowinfo(userid, username, carid, borrowtime, areaname);
-				if (i == 1){
-					JOptionPane.showMessageDialog(null, "添加成功");
+				int j = CarDao.borrowCar(carid);
+				if (j == 1){
+					if (i == 1){
+						JOptionPane.showMessageDialog(null, "租借成功");
+					}
 				}
 			}
 		});

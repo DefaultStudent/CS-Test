@@ -9,7 +9,9 @@ import javax.swing.border.EmptyBorder;
 
 import com.cab.db.AreaDao;
 import com.cab.db.BorrowInfoDao;
+import com.cab.db.CarDao;
 import com.cab.db.ReturnInfoDao;
+import com.cab.db.UserDao;
 import com.cab.modle.Area;
 
 import javax.swing.JLabel;
@@ -110,7 +112,7 @@ public class ReturnInfoAddView extends JFrame {
 		contentPane.add(dateJTF);
 		dateJTF.setColumns(10);
 		
-		JButton addButton = new JButton("\u6DFB\u52A0");
+		JButton addButton = new JButton("\u5F52\u8FD8");
 		addButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int userid = Integer.parseInt(userIdJTF.getText().trim());
@@ -119,9 +121,17 @@ public class ReturnInfoAddView extends JFrame {
 				String area = (String)comboBox.getSelectedItem();
 				String date = dateJTF.getText().trim();
 				
+				if (UserDao.selectUserById(userid).isEmpty()){
+					JOptionPane.showMessageDialog(null, "请先添加此用户信息");
+					return;
+				}
+				
 				int i = ReturnInfoDao.insertReturninfo(userid, username, carid, date, area);
-				if (i == 1){
-					JOptionPane.showMessageDialog(null, "添加成功");
+				int j = CarDao.returnCar(carid);
+				if (j == 1){
+					if (i == 1){
+						JOptionPane.showMessageDialog(null, "归还成功");
+					}
 				}
 			}
 		});
@@ -131,6 +141,8 @@ public class ReturnInfoAddView extends JFrame {
 		JButton resetJB = new JButton("\u91CD\u7F6E");
 		resetJB.setBounds(363, 300, 113, 27);
 		contentPane.add(resetJB);
+		
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 
 }
