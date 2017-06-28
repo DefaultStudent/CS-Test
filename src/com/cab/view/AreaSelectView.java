@@ -19,6 +19,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class AreaSelectView extends JFrame {
 
@@ -59,7 +61,7 @@ public class AreaSelectView extends JFrame {
 	 */
 	public AreaSelectView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 547, 341);
+		setBounds(100, 100, 650, 341);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -70,7 +72,7 @@ public class AreaSelectView extends JFrame {
 		contentPane.add(label);
 		
 		areaIdJTF = new JTextField();
-		areaIdJTF.setBounds(126, 31, 150, 24);
+		areaIdJTF.setBounds(126, 31, 242, 24);
 		contentPane.add(areaIdJTF);
 		areaIdJTF.setColumns(10);
 		
@@ -79,14 +81,22 @@ public class AreaSelectView extends JFrame {
 		contentPane.add(label_1);
 		
 		areaNameJTF = new JTextField();
-		areaNameJTF.setBounds(126, 115, 150, 24);
+		areaNameJTF.setBounds(126, 115, 242, 24);
 		contentPane.add(areaNameJTF);
 		areaNameJTF.setColumns(10);
 		
 		final JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(371, 34, 150, 210);
+		scrollPane.setBounds(468, 34, 150, 210);
 		Object[][] results = getSelect(AreaDao.selectArea());
 		jtable = new JTable(results, areahead);
+		jtable.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				int selRow = jtable.getSelectedRow();
+				areaIdJTF.setText(jtable.getValueAt(selRow, 0).toString().trim());
+				areaNameJTF.setText(jtable.getValueAt(selRow, 1).toString().trim());
+			}
+		});
 		jtable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		scrollPane.setViewportView(jtable);
 		contentPane.add(scrollPane);
@@ -108,19 +118,34 @@ public class AreaSelectView extends JFrame {
 		selectJB.setBounds(14, 217, 113, 27);
 		contentPane.add(selectJB);
 		
-		JButton resetJB = new JButton("\u6E05\u7A7A");
-		resetJB.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				areaIdJTF.setText("");
-				areaNameJTF.setText("");
-				Object[][] results = getSelect(AreaDao.selectArea());
-				jtable = new JTable(results, areahead);
-				jtable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-				scrollPane.setViewportView(jtable);
+		JButton btnNewButton = new JButton("\u4FEE\u6539");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int areaid = Integer.parseInt(areaIdJTF.getText().trim());
+				String areaname = areaNameJTF.getText().trim();
+				
+				int i = AreaDao.updateArea(areaid, areaname);
+				if (i == 1){
+					JOptionPane.showMessageDialog(null, "修改成功！");
+				}
 			}
 		});
-		resetJB.setBounds(213, 217, 113, 27);
-		contentPane.add(resetJB);
+		btnNewButton.setBounds(163, 217, 113, 27);
+		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("\u5220\u9664");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int areaid = Integer.parseInt(areaIdJTF.getText().trim());
+				
+				int i = AreaDao.deleteArea(areaid);
+				if (i == 1){
+					JOptionPane.showMessageDialog(null, "删除成功！");
+				}
+			}
+		});
+		btnNewButton_1.setBounds(310, 217, 113, 27);
+		contentPane.add(btnNewButton_1);
 		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}

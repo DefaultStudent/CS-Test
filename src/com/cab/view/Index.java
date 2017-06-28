@@ -124,8 +124,8 @@ public class Index extends JFrame {
 	//地区信息修改和删除菜单按钮响应事件
 	class areaUpdateandDeleteActionListener implements ActionListener{
 		public void actionPerformed(final ActionEvent e){
-			AreaUpdateandDeleteView aUD = new AreaUpdateandDeleteView();
-			aUD.setVisible(true);
+			AreaSelectView areaSelectView = new AreaSelectView();
+			areaSelectView.setVisible(true);
 		}
 	}
 	
@@ -148,8 +148,8 @@ public class Index extends JFrame {
 	//车辆信息修改和删除菜单按钮响应事件
 	class carUpdateandDeleteActionListener implements ActionListener{
 		public void actionPerformed(final ActionEvent e){
-			CarUpdateandDeleteView carUpdateandDeleteView = new CarUpdateandDeleteView();
-			carUpdateandDeleteView.setVisible(true);
+			CarSelectView carSelectView = new CarSelectView();
+			carSelectView.setVisible(true);
 		}
 	}
 	
@@ -172,8 +172,8 @@ public class Index extends JFrame {
 	//用户信息查询和修改菜单按钮响应事件
 	class userUpdateandDeleteActionListener implements ActionListener{
 		public void actionPerformed(final ActionEvent e){
-			UserUpdateandDeleteView userUpdateandDeleteView = new UserUpdateandDeleteView();
-			userUpdateandDeleteView.setVisible(true);
+			UserSelectView userSelectView = new UserSelectView();
+			userSelectView.setVisible(true);
 		}
 	}
 	

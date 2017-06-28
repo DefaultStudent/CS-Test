@@ -99,7 +99,7 @@ public class CarUpdateandDeleteView extends JFrame {
 		JButton button = new JButton("\u4FEE\u6539");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (carIdJTF.getText().trim().equals("")){
+				if (carIdJTF.getText().trim().length() == 0){
 					JOptionPane.showMessageDialog(null, "«Î ‰»Î≥µ¡æ±‡∫≈£°");
 				} else{
 					int carid = Integer.parseInt(carIdJTF.getText().trim());
